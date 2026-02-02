@@ -1,3 +1,7 @@
+// FIX: define attendance first
+const attendance = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0];
+// 1 = Present, 0 = Absent
+
 function analyzeAttendance(attendanceList) {
   let present = 0;
   let absent = 0;
@@ -32,7 +36,7 @@ function analyzeAttendance(attendanceList) {
   };
 }
 
-// arrow functions
+// arrow function
 const printReport = (report) => {
   console.log("Attendance Report");
   console.log("Days:", report.totalDays);
@@ -42,5 +46,6 @@ const printReport = (report) => {
   console.log("Status:", report.status);
 };
 
+// run program
 const result = analyzeAttendance(attendance);
 printReport(result);
