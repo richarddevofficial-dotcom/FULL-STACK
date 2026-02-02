@@ -31,4 +31,3 @@ function getEvenNumbers(list) {
 const numbers = [45, 23, 78, 12, 98, 56];
 
 console.log(getEvenNumbers(numbers));
-// Output: [78, 12, 98, 56]
