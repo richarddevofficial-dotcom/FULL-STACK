@@ -2,6 +2,8 @@
 const attendance = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0];
 // 1 = Present, 0 = Absent
 
+// This function is for Logic & calculations
+
 function analyzeAttendance(attendanceList) {
   let present = 0;
   let absent = 0;
@@ -36,7 +38,7 @@ function analyzeAttendance(attendanceList) {
   };
 }
 
-// arrow function
+// arrow function for Output & presentation
 const printReport = (report) => {
   console.log("Attendance Report");
   console.log("Days:", report.totalDays);
