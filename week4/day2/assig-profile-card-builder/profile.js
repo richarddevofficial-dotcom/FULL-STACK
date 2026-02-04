@@ -37,11 +37,11 @@ themeBtn.addEventListener("click", function () {
   darkMode = !darkMode;
 
   if (darkMode) {
-    document.body.style.backgroundColor = "#121212";
+    document.body.style.backgroundColor = "#5e66b6ad";
     document.body.style.color = "#ffffff";
-    card.style.backgroundColor = "#1e1e1e";
+    card.style.backgroundColor = "#e2ebde";
     card.style.border = "2px solid #ffffff";
-    header.style.color = "#90caf9";
+    header.style.color = "#e1e6ea";
   } else {
     document.body.style.backgroundColor = "#ffffff";
     document.body.style.color = "#000000";

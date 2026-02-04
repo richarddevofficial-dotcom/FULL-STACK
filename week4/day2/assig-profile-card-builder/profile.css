@@ -1,0 +1,68 @@
+/* ===== GENERAL PAGE STYLES ===== */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* ===== HEADER ===== */
+#header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== FORM AREA ===== */
+#formArea {
+  max-width: 400px;
+  margin: auto;
+}
+
+#formArea p {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  padding: 8px 12px;
+  margin: 5px 3px;
+  cursor: pointer;
+}
+
+/* ===== PROFILE CARD ===== */
+#card {
+  max-width: 400px;
+  margin: 30px auto;
+  text-align: center;
+  border: 2px solid #000000;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition:
+    background-color 0.3s,
+    border 0.3s;
+}
+
+/* ===== DARK MODE ===== */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode #card {
+  background-color: #1e1e1e;
+  border: 2px solid #ffffff;
+}
+
+.dark-mode #header {
+  color: #90caf9;
+}
