@@ -1,4 +1,4 @@
-// ===== SELECT ELEMENTS =====
+// selecting all the elements
 const nameInput = document.getElementById("nameInput");
 const techInput = document.getElementById("techInput");
 const goalInput = document.getElementById("goalInput");
@@ -15,8 +15,8 @@ const header = document.getElementById("header");
 
 let darkMode = false;
 
-// ===== UPDATE CARD =====
-updateBtn.addEventListener("click", function () {
+// updatiing card
+updateBtn.addEventListener("click", () => {
   const name = nameInput.value;
   const tech = techInput.value;
   const goal = goalInput.value;
@@ -25,16 +25,26 @@ updateBtn.addEventListener("click", function () {
   cardTech.textContent = "Favorite Tech: " + (tech || "-");
   cardGoal.textContent = "Goal: " + (goal || "-");
 
-  // style changes (at least 3)
+  // styling added to card
   card.style.border = "2px solid #4caf50";
   card.style.backgroundColor = "#e8f5e9";
   card.style.padding = "20px";
   card.style.borderRadius = "10px";
+  updateBtn.style.borderRadius = "10px";
+  updateBtn.style.background = "rgba(110, 127, 189, 0.97)";
+  updateBtn.style.color = "white";
+  updateBtn.style.border = "none";
 });
 
-// ===== TOGGLE THEME =====
-themeBtn.addEventListener("click", function () {
+// Toggle theme
+themeBtn.addEventListener("click", () => {
   darkMode = !darkMode;
+
+  //   styling themebtn
+  themeBtn.style.background = "rgba(110, 127, 189, 0.97)";
+  themeBtn.style.borderRadius = "10px";
+  themeBtn.style.color = "white";
+  themeBtn.style.border = "none";
 
   if (darkMode) {
     document.body.style.backgroundColor = "#5e66b6ad";
@@ -51,19 +61,25 @@ themeBtn.addEventListener("click", function () {
   }
 });
 
-// ===== RESET =====
+// reset button
 resetBtn.addEventListener("click", function () {
-  // clear inputs
+  // clearing  inputs
   nameInput.value = "";
   techInput.value = "";
   goalInput.value = "";
 
-  // restore text
+  //   styling reset btn
+  resetBtn.style.background = "rgba(110, 127, 189, 0.97)";
+  resetBtn.style.borderRadius = "10px";
+  resetBtn.style.color = "white";
+  resetBtn.style.border = "none";
+
+  // restoring text
   cardName.textContent = "Your Name";
   cardTech.textContent = "Favorite Tech: -";
   cardGoal.textContent = "Goal: -";
 
-  // restore styles
+  // restoring styles
   card.style.border = "none";
   card.style.backgroundColor = "transparent";
   card.style.padding = "0";
