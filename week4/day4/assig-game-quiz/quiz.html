@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game + Scoreboard</title>
+    <link rel="stylesheet" href="quiz.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quiz Game Scoreboard</h1>
+
+        <div id="score">Score: 0</div>
+
+        <div id="questionBox">
+            <p id="questionText"></p>
+        </div>
+
+        <div id="choices">
+            <button class="choiceBtn" data-choice="A"></button>
+            <button class="choiceBtn" data-choice="B"></button>
+            <button class="choiceBtn" data-choice="C"></button>
+        </div>
+
+        <p id="feedback"></p>
+
+        <button id="nextBtn" disabled>Next Question</button>
+        <button id="restartBtn" style="display:none;">Restart Quiz</button>
+
+        <script src="quiz.js" defer></script>
+    </div>
+</body>
+
+</html>
