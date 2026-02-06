@@ -8,26 +8,75 @@ const quizQuestions = [
     correct: "B",
   },
   {
-    question: "2 + 2 equals?",
-    A: "3",
-    B: "4",
-    C: "5",
+    question: "Which language runs in the browser?",
+    A: "Python",
+    B: "Java",
+    C: "JavaScript",
+    correct: "C",
+  },
+  {
+    question: "HTML stands for?",
+    A: "Hyper Text Markup Language",
+    B: "High Tech Machine Language",
+    C: "Hyper Transfer Markup Language",
+    correct: "A",
+  },
+  {
+    question: "CSS is mainly used for?",
+    A: "Logic",
+    B: "Styling",
+    C: "Database",
     correct: "B",
   },
   {
-    question: "Which is a JS framework?",
+    question: "Which is NOT a JavaScript framework?",
     A: "React",
-    B: "Laravel",
-    C: "Django",
+    B: "Angular",
+    C: "Laravel",
+    correct: "C",
+  },
+  {
+    question: "Which symbol is used for comments in JavaScript?",
+    A: "//",
+    B: "<!-- -->",
+    C: "#",
+    correct: "A",
+  },
+  {
+    question: "Which company developed JavaScript?",
+    A: "Microsoft",
+    B: "Netscape",
+    C: "Google",
+    correct: "B",
+  },
+  {
+    question: "What does DOM stand for?",
+    A: "Document Object Model",
+    B: "Data Object Method",
+    C: "Digital Output Model",
+    correct: "A",
+  },
+  {
+    question: "Which keyword is used to declare a variable?",
+    A: "var",
+    B: "int",
+    C: "string",
+    correct: "A",
+  },
+  {
+    question: "Which method adds an element to the DOM?",
+    A: "appendChild()",
+    B: "push()",
+    C: "add()",
     correct: "A",
   },
 ];
 
-// ===== STATE =====
+// state variable
 let currentIndex = 0;
 let score = 0;
 
-// ===== SELECT ELEMENTS =====
+// selecting elements
 const questionText = document.getElementById("questionText");
 const choiceBtns = document.querySelectorAll(".choiceBtn");
 const feedback = document.getElementById("feedback");
@@ -35,7 +84,7 @@ const scoreDisplay = document.getElementById("score");
 const nextBtn = document.getElementById("nextBtn");
 const restartBtn = document.getElementById("restartBtn");
 
-// ===== FUNCTIONS =====
+// functions
 function loadQuestion() {
   const currentQ = quizQuestions[currentIndex];
   questionText.textContent = currentQ.question;
@@ -94,7 +143,7 @@ function restartQuiz() {
   loadQuestion();
 }
 
-// ===== EVENT LISTENERS =====
+// Event listner
 choiceBtns.forEach((btn) => {
   btn.addEventListener("click", checkAnswer);
 });
@@ -102,5 +151,5 @@ choiceBtns.forEach((btn) => {
 nextBtn.addEventListener("click", nextQuestion);
 restartBtn.addEventListener("click", restartQuiz);
 
-// ===== INITIAL LOAD =====
+//inital load
 loadQuestion();
