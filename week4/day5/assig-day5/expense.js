@@ -13,8 +13,8 @@ const errorEl = document.getElementById("error");
 // Array to track expenses
 let expenses = [];
 
-// Add expense
-addBtn.addEventListener("click", function () {
+// Adding expense
+addBtn.addEventListener("click", () => {
   const name = expenseName.value.trim();
   const amount = parseFloat(expenseAmount.value);
   const category = expenseCategory.value;
@@ -27,7 +27,7 @@ addBtn.addEventListener("click", function () {
   }
   errorEl.textContent = "";
 
-  // Create expense object
+  // Creating an expense object
   const expense = { name, amount, category };
 
   // Add to array
@@ -74,7 +74,7 @@ clearBtn.addEventListener("click", function () {
 });
 
 // Update summary
-function updateSummary() {
+const updateSummary = () => {
   const total = expenses.reduce((sum, e) => sum + e.amount, 0);
   totalAmountEl.textContent = total.toFixed(2);
   numItemsEl.textContent = expenses.length;
@@ -88,4 +88,4 @@ function updateSummary() {
     );
     highestExpenseEl.textContent = `${highest.name} ($${highest.amount.toFixed(2)})`;
   }
-}
+};
