@@ -42,10 +42,10 @@ function analyzeAttendance(attendanceList) {
 const printReport = (report) => {
   console.log("Attendance Report");
   console.log(`Days: ${report.totalDays}`);
-  console.log("Present:", report.present);
-  console.log("Absent:", report.absent);
-  console.log("Percentage:", report.percentage + "%");
-  console.log("Status:", report.status);
+  console.log(`Present: ${report.present}`);
+  console.log(`Absent: ${report.absent}`);
+  console.log(`Percentage: ${report.percentage + "%"}`);
+  console.log(`Status: ${report.status}`);
 };
 
 // run program
