@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <h1>Weather Dashboard</h1>
+
+        <div class="search">
+            <input type="text" id="cityInput" placeholder="Enter city name">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <p id="status"></p>
+
+        <div id="currentWeather" class="weather-card">
+            <!-- Current weather will appear here -->
+        </div>
+
+        <h2>5-Day Forecast</h2>
+        <div id="forecast" class="forecast-container">
+            <!-- Forecast cards will appear here -->
+        </div>
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>
