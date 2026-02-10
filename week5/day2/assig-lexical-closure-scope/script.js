@@ -1,31 +1,58 @@
-// Connecting UI + Closure
+// 1️⃣ Business logic (closure)
+function createBankAccount(initialBalance = 0) {
+  let balance = initialBalance;
+  let transactions = [];
+
+  return {
+    deposit(amount) {
+      if (amount <= 0) return;
+      balance += amount;
+      transactions.push(`Deposited ${amount}`);
+    },
+    withdraw(amount) {
+      if (amount > balance) return;
+      balance -= amount;
+      transactions.push(`Withdrew ${amount}`);
+    },
+    getBalance() {
+      return balance;
+    },
+    getTransactions() {
+      return [...transactions];
+    },
+  };
+}
+
+// 2️⃣ Create account instance
 const account = createBankAccount(100);
 
+// 3️⃣ DOM references
 const amountInput = document.getElementById("amount");
 const balanceText = document.getElementById("balance");
 const historyList = document.getElementById("history");
 
+// 4️⃣ UI functions
 function updateUI() {
   balanceText.textContent = `Balance: ${account.getBalance()}`;
   historyList.innerHTML = "";
 
-  account.getTransactions().forEach((item) => {
+  account.getTransactions().forEach((tx) => {
     const li = document.createElement("li");
-    li.textContent = item;
+    li.textContent = tx;
     historyList.appendChild(li);
   });
 }
 
+// 5️⃣ Event listeners
 document.getElementById("depositBtn").addEventListener("click", () => {
-  const amount = Number(amountInput.value);
-  account.deposit(amount);
+  account.deposit(Number(amountInput.value));
   updateUI();
 });
 
 document.getElementById("withdrawBtn").addEventListener("click", () => {
-  const amount = Number(amountInput.value);
-  account.withdraw(amount);
+  account.withdraw(Number(amountInput.value));
   updateUI();
 });
 
+// 6️⃣ Initial render
 updateUI();
