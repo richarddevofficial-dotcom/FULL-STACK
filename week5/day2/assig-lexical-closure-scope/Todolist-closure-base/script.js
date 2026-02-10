@@ -14,7 +14,7 @@ function render() {
       todoApp.toggleTodo(index);
       render();
     });
-
+    // creating delBtn
     const delBtn = document.createElement("button");
     delBtn.textContent = "Del";
     // styling the del btn
