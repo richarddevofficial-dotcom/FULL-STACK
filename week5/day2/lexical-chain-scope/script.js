@@ -1,19 +1,3 @@
-const globalVari = "what is global varial";
-
-function outer() {
-  const outerFunction = "this is outer function";
-
-  function inner() {
-    const innerFunction = "this is inner function";
-    console.log(inner);
-    console.log(outer);
-    console.log(globalVari);
-  }
-  inner();
-}
-
-outer();
-
 // Assignment: Bank Account Module
 
 function createBankAccount(initialBalance = 0) {

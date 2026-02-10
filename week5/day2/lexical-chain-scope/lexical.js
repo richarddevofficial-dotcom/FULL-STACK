@@ -3,6 +3,8 @@
 
 // Think of scope like nested boxes:
 
+// normal functions format
+
 const globalVari = "This is  a global functions";
 
 function outer() {
@@ -18,6 +20,8 @@ function outer() {
 }
 
 outer();
+
+// lexical using arrow functions
 
 const varGlobal = "This is glo";
 
