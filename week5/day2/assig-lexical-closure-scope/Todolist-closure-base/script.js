@@ -1,3 +1,4 @@
+// connecting html to js
 const input = document.getElementById("todoInput");
 const list = document.getElementById("todoList");
 
@@ -15,7 +16,16 @@ function render() {
     });
 
     const delBtn = document.createElement("button");
-    delBtn.textContent = "X";
+    delBtn.textContent = "Del";
+    // styling the del btn
+    delBtn.style.backgroundColor = "#f44336";
+    delBtn.style.color = "white";
+    delBtn.style.border = "none";
+    delBtn.style.borderRadius = "4px";
+    delBtn.style.padding = "2px 6px";
+    delBtn.style.fontSize = "12px";
+    delBtn.style.cursor = "pointer";
+    delBtn.style.marginLeft = "10px";
     delBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       todoApp.deleteTodo(index);
@@ -33,7 +43,7 @@ document.getElementById("addBtn").addEventListener("click", () => {
   render();
 });
 
-// closure
+// Closure Starts Here
 function createTodoApp() {
   let todos = []; // 🔒 private
 
