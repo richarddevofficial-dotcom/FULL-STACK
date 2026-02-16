@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Processor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Payment Processor</h1>
+
+        <form id="paymentForm">
+            <label>
+                Amount:
+                <input type="number" id="amount" required min="1" placeholder="Enter amount">
+            </label>
+
+            <label>
+                Method:
+                <select id="method">
+                    <option value="card">Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="mobile">Mobile Money</option>
+                </select>
+            </label>
+
+            <label>
+                <input type="checkbox" id="discount"> Apply 10% Discount
+            </label>
+
+            <button type="submit">Process Payment</button>
+        </form>
+
+        <h2>Transaction History</h2>
+        <ul id="history"></ul>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
