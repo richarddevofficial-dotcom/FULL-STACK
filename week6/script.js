@@ -119,91 +119,138 @@
 
 // subcriber
 // ✅ Full Corrected Subscription Function
-function subscribe(plan = "free") {
-  // Map of plans to their access
-  const plans = {
-    free: "Landing Page",
-    basic: "Home Page",
-    fullpaid: "Full Website",
-  };
+// function subscribe(plan = "free") {
+//   // Map of plans to their access
+//   const plans = {
+//     free: "Landing Page",
+//     basic: "Home Page",
+//     fullpaid: "Full Website",
+//   };
 
-  // Check if plan exists, otherwise deny access
-  const access = plans[plan] || "Access denied";
+//   // Check if plan exists, otherwise deny access
+//   const access = plans[plan] || "Access denied";
 
-  return `My subscription gives access to: ${access}`;
-}
+//   return `My subscription gives access to: ${access}`;
+// }
 
-// Test cases
-console.log(subscribe()); // Default free plan
-console.log(subscribe("basic")); // Basic plan
-console.log(subscribe("fullpaid")); // Full paid plan
-console.log(subscribe("vip")); // Invalid plan
+// // Test cases
+// console.log(subscribe()); // Default free plan
+// console.log(subscribe("basic")); // Basic plan
+// console.log(subscribe("fullpaid")); // Full paid plan
+// console.log(subscribe("vip")); // Invalid plan
 
-// payment process
-function processPayment(amount, method = "card", discountCallback = null) {
-  // Validate amount
-  if (amount <= 0) {
-    return "Payment failed: Amount must be greater than 0";
-  }
+// // payment process
+// function processPayment(amount, method = "card", discountCallback = null) {
+//   // Validate amount
+//   if (amount <= 0) {
+//     return "Payment failed: Amount must be greater than 0";
+//   }
 
-  // Apply discount if callback is provided
-  if (discountCallback && typeof discountCallback === "function") {
-    amount = discountCallback(amount);
-  }
+//   // Apply discount if callback is provided
+//   if (discountCallback && typeof discountCallback === "function") {
+//     amount = discountCallback(amount);
+//   }
 
-  // Payment method handling
-  let result;
-  switch (method.toLowerCase()) {
-    case "card":
-      result = `Paid $${amount} using Credit/Debit Card ✅`;
+//   // Payment method handling
+//   let result;
+//   switch (method.toLowerCase()) {
+//     case "card":
+//       result = `Paid $${amount} using Credit/Debit Card ✅`;
+//       break;
+//     case "paypal":
+//       result = `Paid $${amount} via PayPal ✅`;
+//       break;
+//     case "mobile":
+//       result = `Paid $${amount} via Mobile Money ✅`;
+//       break;
+//     default:
+//       result = `Payment failed: Unsupported method '${method}' ❌`;
+//   }
+
+//   return result;
+// }
+
+// // ✅ Example Usage
+// console.log(processPayment(100)); // Default card
+// console.log(processPayment(200, "paypal")); // PayPal
+// console.log(processPayment(50, "mobile")); // Mobile Money
+// console.log(processPayment(150, "crypto")); // Unsupported
+// console.log(processPayment(100, "card", (amount) => amount * 0.9)); // With 10% discount
+
+// // payment process using callback
+// function processPayment(amount, method = "card", callback = null) {
+//   // Validate amount
+//   if (amount <= 0) {
+//     return "Payment failed: Amount must be greater than 0";
+//   }
+
+//   // Apply callback if provided
+//   if (callback && typeof callback === "function") {
+//     amount = callback(amount); // callback can modify the amount
+//   }
+
+//   // Payment method logic
+//   let result;
+//   switch (method.toLowerCase()) {
+//     case "card":
+//       result = `Paid $${amount} using Credit/Debit Card ✅`;
+//       break;
+//     case "paypal":
+//       result = `Paid $${amount} via PayPal ✅`;
+//       break;
+//     case "mobile":
+//       result = `Paid $${amount} via Mobile Money ✅`;
+//       break;
+//     default:
+//       result = `Payment failed: Unsupported method '${method}' ❌`;
+//   }
+
+//   return result;
+// }
+
+// grading
+const calGrade = (score = 50) => {
+  let status;
+  switch (score) {
+    case 90:
+      status = "Excellent";
       break;
-    case "paypal":
-      result = `Paid $${amount} via PayPal ✅`;
+    case 80:
+      status = "V.Good";
       break;
-    case "mobile":
-      result = `Paid $${amount} via Mobile Money ✅`;
+    case 70:
+      status = "Good";
+      break;
+    case 60:
+      status = "Fair";
       break;
     default:
-      result = `Payment failed: Unsupported method '${method}' ❌`;
+      status = "Poor";
   }
+  return `your score is ${score} and your grade is ${status}`;
+};
 
-  return result;
-}
+console.log(calGrade());
 
-// ✅ Example Usage
-console.log(processPayment(100)); // Default card
-console.log(processPayment(200, "paypal")); // PayPal
-console.log(processPayment(50, "mobile")); // Mobile Money
-console.log(processPayment(150, "crypto")); // Unsupported
-console.log(processPayment(100, "card", (amount) => amount * 0.9)); // With 10% discount
-
-// payment process using callback
-function processPayment(amount, method = "card", callback = null) {
-  // Validate amount
-  if (amount <= 0) {
-    return "Payment failed: Amount must be greater than 0";
+// trying with if else
+const calGradeIfElse = (score = 50) => {
+  let status;
+  if (score === 90) {
+    status = "Excellent";
   }
-
-  // Apply callback if provided
-  if (callback && typeof callback === "function") {
-    amount = callback(amount); // callback can modify the amount
+  if (score >= 80 && score < 90) {
+    status = "Very Good";
   }
-
-  // Payment method logic
-  let result;
-  switch (method.toLowerCase()) {
-    case "card":
-      result = `Paid $${amount} using Credit/Debit Card ✅`;
-      break;
-    case "paypal":
-      result = `Paid $${amount} via PayPal ✅`;
-      break;
-    case "mobile":
-      result = `Paid $${amount} via Mobile Money ✅`;
-      break;
-    default:
-      result = `Payment failed: Unsupported method '${method}' ❌`;
+  if (score >= 70 && score < 80) {
+    status = "Good";
   }
+  if (score >= 60 && score < 70) {
+    status = "Fair";
+  }
+  if (score < 60) {
+    status = "Poor";
+  }
+  return `your score is ${score} and your grade is ${status}`;
+};
 
-  return result;
-}
+console.log(calGradeIfElse(78));
