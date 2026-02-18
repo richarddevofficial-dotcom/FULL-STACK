@@ -40,6 +40,7 @@
 // // "Error: Division by zero"
 
 const flexCalc = (operator, ...numbers) => {
+  //check 2 number in array
   if (numbers.length < 2) {
     numbers = [...numbers, 0];
   }
@@ -47,13 +48,12 @@ const flexCalc = (operator, ...numbers) => {
   switch (operator) {
     case "+":
       return numbers.reduce((total, num) => total + num, 0);
-      break;
+
     case "-":
       return numbers.reduce((total, num) => total - num);
-      break;
+
     case "*":
       return numbers.reduce((total, num) => total * num, 1);
-      break;
     case "/":
       //validation to start from index 1 and check 0
       if (numbers.slice(1).includes(0)) {
@@ -65,4 +65,4 @@ const flexCalc = (operator, ...numbers) => {
   }
 };
 
-console.log(flexCalc("/", 4, 0, 6));
+console.log(flexCalc("-", 4, 0, 6));
