@@ -22,3 +22,8 @@ const smartTemplate = notifier(
   "hello {user}, your payment is successfull, thank you for banking with us!",
 );
 smartTemplate("Fahma");
+
+const addTemplate = notifier(
+  "hello {user}, your payment is successfull, thank you for banking with us!",
+);
+addTemplate("Rhoda");
