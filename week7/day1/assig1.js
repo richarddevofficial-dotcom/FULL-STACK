@@ -16,7 +16,7 @@ function loginUser(username, password) {
           message: "Invalid credentials",
         });
       }
-    }, 5000);
+    }, 3000);
   });
 }
 
