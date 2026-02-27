@@ -1,112 +1,112 @@
 //Simple GET Request Example
-// fetch("https://jsonplaceholder.typicode.com/posts")
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => {
-//     console.error("Error:", error);
-//   });
+fetch("https://jsonplaceholder.typicode.com/posts")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
 
 //asyn fuction
-// async function getPosts() {
-//   try {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+async function getPosts() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-//     const data = await response.json();
+    const data = await response.json();
 
-//     console.log(data);
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
-// getPosts();
+getPosts();
 
-// async function makePost() {
-//   try {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+async function makePost() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
-//     const data = await response.json();
+    const data = await response.json();
 
-//     console.log(data);
-//   } catch (err) {
-//     console.log("Error", err.makePost);
-//   }
-// }
+    console.log(data);
+  } catch (err) {
+    console.log("Error", err.makePost);
+  }
+}
 
-// makePost();
+makePost();
 
 //async
-// async function instagram() {
-//   try {
-//     const response = await fetch(
-//       "https://jsonplaceholder.typicode.com/posts/1000",
-//     );
+async function instagram() {
+  try {
+    const response = await fetch(
+      "https://jsonplaceholder.typicode.com/posts/1000",
+    );
 
-//     if (!response.ok) {
-//       throw new Error("Post Not Found");
-//     }
+    if (!response.ok) {
+      throw new Error("Post Not Found");
+    }
 
-//     const post = await response.json();
+    const post = await response.json();
 
-//     console.log("full post", post);
-//   } catch (error) {
-//     console.log("Error", error.message);
-//   }
-// }
+    console.log("full post", post);
+  } catch (error) {
+    console.log("Error", error.message);
+  }
+}
 
-// instagram();
+instagram();
 
 //trial
-// async function getPost(id) {
-//   try {
-//     const response = await fetch(
-//       `https://jsonplaceholder.typicode.com/posts/${id}`,
-//     );
+async function getPost(id) {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+    );
 
-//     if (!response.ok) {
-//       throw new Error(`HTTP ERROR: ${response.status}`);
-//     }
+    if (!response.ok) {
+      throw new Error(`HTTP ERROR: ${response.status}`);
+    }
 
-//     const data = await response.json();
+    const data = await response.json();
 
-//     console.log("Post:", data);
-//   } catch (err) {
-//     console.log("something went wrong:", err.message);
-//   }
-// }
+    console.log("Post:", data);
+  } catch (err) {
+    console.log("something went wrong:", err.message);
+  }
+}
 
-// getPost(101);
+getPost(101);
 
-// //greatig object
+//greatig object
 
-// async function createPost() {
-//   try {
-//     const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         title: "Drich Post",
-//         body: "Learning async/await",
-//         userId: 1,
-//       }),
-//     });
+async function createPost() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: "Drich Post",
+        body: "Learning async/await",
+        userId: 1,
+      }),
+    });
 
-//     if (!response.ok) {
-//       throw new Error("Failed to create post");
-//     }
+    if (!response.ok) {
+      throw new Error("Failed to create post");
+    }
 
-//     const data = await response.json();
-//     console.log("Created:", data);
-//   } catch (error) {
-//     console.error("Error:", error.message);
-//   }
-// }
+    const data = await response.json();
+    console.log("Created:", data);
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+}
 
-// createPost();
+createPost();
 
 //Reusable Fetch Wrapper
 async function fetchData(url, options = {}) {
