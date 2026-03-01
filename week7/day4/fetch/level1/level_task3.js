@@ -14,7 +14,7 @@ async function getFirst() {
 
   const data = await response.json();
 
-  console.log("Data ..", data[1].title);
+  console.log("Data ..", data[2].title);
 }
 
 getFirst();
