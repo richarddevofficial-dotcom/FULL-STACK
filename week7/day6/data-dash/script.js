@@ -41,8 +41,8 @@ function resetCard(loadingEl, dataEl, loadingText) {
 // FETCH FUNCTIONS
 // ==========================================
 async function fetchWeather() {
-  const API_KEY = "YOUR_API_KEY"; // Replace with your OpenWeatherMap API key
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=Nairobi&units=metric&appid=${API_KEY}`;
+  const API_KEY = "3abb9b459169fc9924ca3044d440a87a";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=Juba&appid=${API_KEY}&units=metric`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Weather API Error: ${res.status}`);
