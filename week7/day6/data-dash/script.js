@@ -1,37 +1,47 @@
-// 1. Cache DOM Elements
+// ==========================================
+// DOM CACHE
+// ==========================================
 const weatherCard = document.getElementById("weather-card");
 const quoteCard = document.getElementById("quote-card");
 const dogCard = document.getElementById("dog-card");
 
+const refreshBtn = document.getElementById("refresh-btn");
+const themeToggle = document.getElementById("theme-toggle");
+const nextQuoteBtn = document.querySelector(".next-quote");
+
+// Weather elements
 const weatherLoading = weatherCard.querySelector(".loading");
 const weatherData = weatherCard.querySelector(".data");
 
+// Quote elements
 const quoteLoading = quoteCard.querySelector(".loading");
 const quoteData = quoteCard.querySelector(".data");
 
+// Dog elements
 const dogLoading = dogCard.querySelector(".loading");
 const dogData = dogCard.querySelector(".data");
 
-const refreshBtn = document.getElementById("refresh-btn");
-const themeToggle = document.getElementById("theme-toggle");
-
-// 2. Helper Functions
+// ==========================================
+// HELPER FUNCTIONS
+// ==========================================
 function showError(loadingEl, dataEl, message) {
   loadingEl.style.display = "none";
-  dataEl.style.display = "block";
-  dataEl.innerHTML = `<p class="error">❌ ${message}</p>`;
+  dataEl.classList.remove("hidden");
+  dataEl.innerHTML = `<p class="error"> ${message}</p>`;
 }
 
-function resetCard(loadingEl, dataEl, text) {
+function resetCard(loadingEl, dataEl, loadingText) {
   loadingEl.style.display = "block";
-  loadingEl.textContent = text;
-  dataEl.style.display = "none";
+  loadingEl.textContent = loadingText;
+  dataEl.classList.add("hidden");
   dataEl.innerHTML = "";
 }
 
-// 3. Fetch Functions
+// ==========================================
+// FETCH FUNCTIONS
+// ==========================================
 async function fetchWeather() {
-  const API_KEY = "YOUR_API_KEY";
+  const API_KEY = "YOUR_API_KEY"; // Replace with your OpenWeatherMap API key
   const url = `https://api.openweathermap.org/data/2.5/weather?q=Nairobi&units=metric&appid=${API_KEY}`;
 
   const res = await fetch(url);
@@ -40,107 +50,104 @@ async function fetchWeather() {
   const json = await res.json();
 
   return {
-    city: json.name,
     temp: json.main.temp,
     desc: json.weather[0].description,
+    city: json.name,
   };
 }
 
+// Using DummyJSON for stable browser CORS
 async function fetchQuote() {
-  const url = "https://zenquotes.io/api/random";
-  const res = await fetch(url);
+  const res = await fetch("https://dummyjson.com/quotes/random");
+
   if (!res.ok) throw new Error(`Quote API Error: ${res.status}`);
 
-  const [quoteObj] = await res.json();
+  const data = await res.json();
 
   return {
-    text: quoteObj.q,
-    author: quoteObj.a,
+    text: data.quote,
+    author: data.author,
   };
 }
 
 async function fetchDog() {
-  const url = "https://dog.ceo/api/breeds/image/random";
-  const res = await fetch(url);
+  const res = await fetch("https://dog.ceo/api/breeds/image/random");
   if (!res.ok) throw new Error(`Dog API Error: ${res.status}`);
 
   const json = await res.json();
-
-  return {
-    imageUrl: json.message,
-  };
+  return json.message;
 }
 
-// 4. Render Functions
-
+// ==========================================
+// RENDER FUNCTIONS
+// ==========================================
 function renderWeather(weather) {
-  if (weather.error) {
-    showError(weatherLoading, weatherData, weather.error);
-  } else {
-    weatherLoading.style.display = "none";
-    weatherData.style.display = "block";
-    weatherData.innerHTML = `
-      <p><strong>${weather.city}</strong></p>
-      <p>${weather.temp}°C</p>
-      <p style="text-transform: capitalize;">${weather.desc}</p>
-    `;
-  }
+  weatherLoading.style.display = "none";
+  weatherData.classList.remove("hidden");
+  weatherData.innerHTML = `
+    <p><strong>${weather.city}</strong></p>
+    <p>${weather.temp}°C</p>
+    <p style="text-transform: capitalize;">${weather.desc}</p>
+  `;
 }
 
 function renderQuote(quote) {
+  quoteLoading.style.display = "none";
+  quoteData.classList.remove("hidden");
+  quoteData.innerHTML = `
+    <blockquote>"${quote.text}"</blockquote>
+    <p style="text-align:right;">— ${quote.author}</p>
+  `;
+}
+
+function renderDog(imageUrl) {
+  dogLoading.style.display = "none";
+  dogData.classList.remove("hidden");
+  dogData.innerHTML = `<img src="${imageUrl}" alt="Random Dog"/>`;
+}
+
+// ==========================================
+// LOAD AND RENDER SINGLE QUOTE
+// ==========================================
+async function loadAndRenderQuote() {
+  resetCard(quoteLoading, quoteData, "Loading quote...");
+  const quote = await fetchQuote().catch((err) => ({ error: err.message }));
+
   if (quote.error) {
     showError(quoteLoading, quoteData, quote.error);
   } else {
-    quoteLoading.style.display = "none";
-    quoteData.style.display = "block";
-    quoteData.innerHTML = `
-      <blockquote style="font-style: italic;">
-        "${quote.text}"
-      </blockquote>
-      <p style="text-align:right;">— <strong>${quote.author}</strong></p>
-      <button id="next-quote" style="margin-top:1rem;">Next Quote</button>
-    `;
-
-    document
-      .getElementById("next-quote")
-      .addEventListener("click", loadNextQuote);
+    renderQuote(quote);
   }
 }
 
-function renderDog(dog) {
-  if (dog.error) {
-    showError(dogLoading, dogData, dog.error);
-  } else {
-    dogLoading.style.display = "none";
-    dogData.style.display = "block";
-    dogData.innerHTML = `
-      <img src="${dog.imageUrl}" style="width:100%; border-radius:8px;" />
-    `;
-  }
-}
-
-// 5. Quote Pagination
-async function loadNextQuote() {
-  resetCard(quoteLoading, quoteData, "Loading quote...");
-  const quote = await fetchQuote().catch((err) => ({ error: err.message }));
-  renderQuote(quote);
-}
-
-// 6. Initialization
-
+// ==========================================
+// INIT DASHBOARD
+// ==========================================
 async function initDashboard() {
-  const [weather, quote, dog] = await Promise.all([
+  // Weather + Dog fetch concurrently
+  const [weather, dog] = await Promise.all([
     fetchWeather().catch((err) => ({ error: err.message })),
-    fetchQuote().catch((err) => ({ error: err.message })),
     fetchDog().catch((err) => ({ error: err.message })),
   ]);
 
-  renderWeather(weather);
-  renderQuote(quote);
-  renderDog(dog);
+  weather.error
+    ? showError(weatherLoading, weatherData, weather.error)
+    : renderWeather(weather);
+
+  dog.error ? showError(dogLoading, dogData, dog.error) : renderDog(dog);
+
+  // Fetch quote separately
+  loadAndRenderQuote();
 }
 
-// 7. Event Listeners
+// ==========================================
+// EVENTS
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  loadTheme();
+  initDashboard();
+});
+
 refreshBtn.addEventListener("click", () => {
   resetCard(weatherLoading, weatherData, "Loading weather...");
   resetCard(quoteLoading, quoteData, "Loading quote...");
@@ -148,19 +155,22 @@ refreshBtn.addEventListener("click", () => {
   initDashboard();
 });
 
-function applyTheme(theme) {
-  document.body.classList.toggle("dark", theme === "dark");
-  localStorage.setItem("theme", theme);
+if (nextQuoteBtn) {
+  nextQuoteBtn.addEventListener("click", loadAndRenderQuote);
+}
+
+// ==========================================
+// THEME MANAGEMENT
+// ==========================================
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  }
 }
 
 themeToggle.addEventListener("click", () => {
-  const current = localStorage.getItem("theme") || "light";
-  const newTheme = current === "light" ? "dark" : "light";
-  applyTheme(newTheme);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme") || "light";
-  applyTheme(savedTheme);
-  initDashboard();
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 });

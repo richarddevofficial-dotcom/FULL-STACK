@@ -5,36 +5,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="top-bar">
-        <button id="refresh-btn">Refresh All</button>
-        <button id="theme-toggle">Toggle Theme</button>
-    </div>
+    <header class="top-bar">
+        <h1>Data Dashboard</h1>
+        <div class="controls">
+            <button id="refresh-btn">Refresh All</button>
+            <button id="theme-toggle">Toggle Theme</button>
+        </div>
+    </header>
 
-    <!-- Weather Card -->
-    <div class="card" id="weather-card">
-        <h2>Weather</h2>
-        <div class="loading">Loading weather...</div>
-        <div class="data" style="display:none;"></div>
-    </div>
+    <main class="container">
 
-    <!-- Quote Card -->
-    <div class="card" id="quote-card">
-        <h2>Random Quote</h2>
-        <div class="loading">Loading quote...</div>
-        <div class="data" style="display:none;"></div>
-    </div>
+        <!-- Weather Card -->
+        <div class="card" id="weather-card">
+            <h2>Weather</h2>
+            <div class="loading">Loading weather...</div>
+            <div class="data hidden"></div>
+        </div>
 
-    <!-- Dog Card -->
-    <div class="card" id="dog-card">
-        <h2>Random Dog</h2>
-        <div class="loading">Loading dog...</div>
-        <div class="data" style="display:none;"></div>
-    </div>
+        <!-- Quote Card -->
+        <div class="card" id="quote-card">
+            <h2>Random Quote</h2>
+            <div class="loading">Loading quote...</div>
+            <div class="data hidden"></div>
+            <button class="next-quote">Next Quote</button>
+        </div>
+
+        <!-- Dog Card -->
+        <div class="card" id="dog-card">
+            <h2>Random Dog</h2>
+            <div class="loading">Loading dog...</div>
+            <div class="data hidden"></div>
+        </div>
+
+    </main>
 
     <script src="script.js" defer></script>
 </body>
