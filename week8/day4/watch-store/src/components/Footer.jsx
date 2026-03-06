@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>Created by: Drich</p>
+      <p>Created by: Dev Drichi</p>
     </footer>
   );
 }
