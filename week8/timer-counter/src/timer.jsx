@@ -41,7 +41,6 @@ function Timer() {
     <div className="timer-container">
       <h2>Time Remaining: {time} seconds</h2>
 
-      {/* Bonus 2: Set custom timer */}
       <input
         type="number"
         placeholder="Enter seconds"
@@ -54,13 +53,10 @@ function Timer() {
       <br />
       <br />
 
-      {/* Start button */}
       <button onClick={startCountdown}>Start Countdown</button>
 
-      {/* Reset button */}
       <button onClick={resetTimer}>Reset Timer</button>
 
-      {/* Bonus 3: Custom message */}
       {time === 0 && <p>Countdown finished!</p>}
     </div>
   );
