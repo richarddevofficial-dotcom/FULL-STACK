@@ -38,7 +38,7 @@ function Timer() {
   };
 
   return (
-    <div>
+    <div className="timer-container">
       <h2>Time Remaining: {time} seconds</h2>
 
       {/* Bonus 2: Set custom timer */}
