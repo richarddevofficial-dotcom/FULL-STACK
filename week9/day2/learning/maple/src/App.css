@@ -1,0 +1,161 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full viewport app container */
+.app {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f3f4f6; /* light gray SaaS style */
+  min-height: 100vh; /* full viewport height */
+  width: 100vw; /* full width */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: flex-start; /* top align content */
+  padding: 40px 20px;
+}
+
+/* Dashboard container */
+.dashboard {
+  width: 100%;
+  max-width: 800px; /* wider for full screen */
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+.dashboard h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* Toggle buttons */
+.toggle-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+  padding: 10px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.toggle-buttons button:hover {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.toggle-buttons button.active {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+/* Total count badge */
+.count {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #4f46e5;
+  font-size: 20px;
+}
+
+/* Student list */
+.student-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual student card */
+.student-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 25px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111827;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Student track */
+.student-track {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .student-track {
+    margin-top: 6px;
+  }
+}
+
+/* Search box container */
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Search input */
+.search-box input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  color: black;
+  outline: none;
+  background: #e9e9e9fc;
+  transition: all 0.2s ease;
+  font-size: large;
+}
+
+/* Placeholder text */
+.search-box input::placeholder {
+  color: #07204b;
+}
+
+/* Focus effect */
+.search-box input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
