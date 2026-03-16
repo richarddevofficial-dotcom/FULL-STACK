@@ -1,0 +1,33 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global body styling */
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+
+  /* professional gradient background */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Root container */
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Smooth font rendering */
+body,
+input,
+button {
+  font-family: inherit;
+}
