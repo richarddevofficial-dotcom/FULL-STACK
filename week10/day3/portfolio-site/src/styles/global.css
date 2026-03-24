@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+.container {
+  padding: 40px 10%;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.project-card {
+  background: #0f172a;
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background: #1e293b;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.contact-form button {
+  background: #38bdf8;
+  border: none;
+  padding: 10px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}

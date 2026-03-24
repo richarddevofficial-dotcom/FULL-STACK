@@ -1,0 +1,14 @@
+html,
+body,
+#root {
+  height: 100%; /* full height of viewport */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1; /* makes content expand to fill space */
+}

@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: #0f172a;
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  position: relative;
+}
+
+.links a:hover {
+  color: #38bdf8;
+}
+
+.links a.active {
+  color: #38bdf8;
+}
+
+.links a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #38bdf8;
+  bottom: -5px;
+  left: 0;
+}

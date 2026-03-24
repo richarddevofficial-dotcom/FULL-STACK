@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getRandomUser } from "../api/userApi";
 
 function RandomUserCard() {
   const [user, setUser] = useState(null);
